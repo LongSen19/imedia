@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible">
+
+    <title>IMedia</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="/css/page-style.css">
+    <script src="https://unpkg.com/vue@next"></script>
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="sidebar" class="col-sm-1 col-md-1 col-lg-1">
+            <div class="sidebar-header">
+                <img src="/images/imgae.png" id="img">
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <div class="col-sm-12">
+                        <!-- <img src="images/home.png" class="symbol"> -->
+                        <p class="centerText"><a class="header-font" href="/home">Home</a></p>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="col-sm-12">
+                        <!-- <img src="images/explore.png" class="symbol"> -->
+                        <p class="header-font centerText">
+                            <a class="header-font" href="/explore">Explore</a>
+                        </p>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="col-sm-12">
+                        <!-- <img src="images/notification.png" class="symbol"> -->
+                        <p class="header-font centerText">
+                            <% if (loggedIn) { %>
+                            <a class="header-font" href="/notification">Notification</a> 
+                            <% }else { %>
+                            Notification
+                            <% } %>
+                        </p>
+                        </div>
+                </li>
+
+
+                <li>
+                    <div class="col-sm-12">
+                        <!-- <img src="images/profile.png" class="symbol"> -->
+                        <p class="header-font centerText">
+                            <!-- <% if(user) { %> -->
+                                <a class="header-font centerText" href="/profile/me">Profile</a>
+                            <!-- <%}%> -->
+                         </p>
+                    </div>
+                </li>
+
+                <li>
+                  <div class="col-sm-12">
+                    <!-- <img src="images/profile.png" class="symbol"> -->
+                    <p class="header-font centerText">
+                        <!-- <% if(user) { %> -->
+                            <a class="header-font centerText" href="<%=`/users/${user._id}/edit`%>">Edit Account</a>
+                        <!-- <%}%> -->
+                     </p>
+                </div>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <!-- <button type="button" class="btn button col-sm-12">Tweet</button> -->
+                </li>
+                <li>
+                    <div class="left-align2">
+                        <% if(user) {%>
+                        <img src="/images/self.png" class="big-symbol">
+                            <b class="header-font">
+                                <%= user.userName %>
+                                    <%}%>
+                            </b>
+                    </div>
+                </li>
+            </ul>
+            <div>
+                <% if (loggedIn) { %>
+                <div class="bubble centerText">
+                    <a href="/logout">Log out</a>
+                </div>
+                <%} else {%>
+                <div class="bubble centerText">
+                    <a href="/login">Log In</a>
+                </div>
+            </br>
+                <p class=centerText><a href="/users/new">Sign Up</a></p>
+                <p class=centerText><a href="/about">About</a></p>
+                <% } %>
+            </div>
+        </div>
+        <% if(flashMessages){ %>
+            <% if(flashMessages.success){ %>
+              <div class="flashAccount">
+                <%= flashMessages.success %>
+              </div>
+           <% } else if(flashMessages.error){ %>
+              <div class="flashErrorAccount">
+                <%= flashMessages.error %>
+              </div>
+           <% } %>
+        <% } %>
+        <%- body %>
+       
+        <div class="sidebar hiddenBar" class="col-sm-4">
+            <div class="box home-box header-font">Trending</div>
+            <div class="line"></div>
+
+            <div class="box">
+                <div>
+                    <dl class="tag">
+                    <% hashtags.forEach(tag => { %>
+                    <dt><%=tag.word %></dt>
+                    <% }); %>
+                    </dl>
+                </div>
+            </div>
+            
+            <div class="line"></div>
+            <div class="box">
+              <div>
+                <a
+                  href="https://www.latimes.com/entertainment-arts/story/2021-02-23/shailene-woodley-aaron-rodgers-engaged-jimmy-fallon">
+                  <h5>LAT Entertainment</h5>
+                  Shailene Woodley opens up about engagement to Aaron Rodgers
+                </a>
+              </div>
+            </div>
+            <div class="line"></div>
+            <div class="box">
+              <div>
+                <a href="https://www.wsj.com/articles/pandemic-loneliness-is-hitting-young-adults-especially-hard-11614104792">
+                  <h5>The Wall Street Journal</h5>
+                  Pandemic loneliness is hitting young adults especially hard
+                </a>
+              </div>
+            </div>
+            <div class="line"></div>
+            <div class="box">
+              <div>
+                <a href="https://www.buzzfeed.com/jenniferabidor/elizabeth-olsen-mary-kate-ashley">
+                  <h5>BuzzFeed</h5>
+                  People Don't Know Elizabeth Olsen Is Related To Mary-Kate and Ashley
+                </a>
+              </div>
+            </div>
+          </div>
+
+
+            <!-- jQuery CDN - Slim version (=without AJAX) -->
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+            <!-- Popper.JS -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+                integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+                crossorigin="anonymous"></script>
+            <!-- Bootstrap JS -->
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+                integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+                crossorigin="anonymous"></script>
+
+            <script src="/js/vue.js"></script>
+            <script>
+                const mountedApp = app.mount("#app");
+            </script>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<div id="content" class="col-sm-8 col-md-6 col-lg-6">
+    <% if(user) { %>
+      <div class="box">
+        <div class="otherUser header-font">
+          <img src="../images/self.png" class="big-symbol" />
+          <%= user.userName %>
+          </div>
+          <div class="centerText">
+          <p>Total Posts: <%= user.numberOfPosts %></p>
+          <p>Following: <%= user.following.length %></p>
+          <p>Bio: <%=user.bio %></p>
+          </div>
+      </div>
+      <%}%>
+        <div class="margin-bottom"></div>
+ 
+        <% myPosts.forEach(post=> { %>
+          <div class="box">
+            <div class="form-group row">
+              <div class="col-sm-2 col-md-2">
+                <img src="../images/self.png" class="big-symbol" />
+              </div>
+              <div class="col-sm-9 col-md-10">
+                <p class="header-font">
+                  <% if (!loggedIn) {%>
+                    <%= post.userName %>
+                    <% } else { %>
+                  <% if(post.userEmail != user.email) { %>
+                    <a href="<%= `/home/${post.userEmail}` %>">
+                      <%= post.userName %>
+                    </a>
+                    <% } else { %>
+                      <%= post.userName %>
+                      <span class="right-align"><a href="<%= `/mypost/${post._id}?_method=DELETE` %>" onclick="return confirm('Are you sure you want to delete this post?')">X</a></span>
+                     <%}%>
+                    <%}%>
+  
+                </p>
+                <p class="fullName text-secondary">
+                  @<%= post.fullName %>
+                </p>
+                </div>
+                <p class="left-align2">
+                  <%= post.post %>
+                </p>
+                <!-- <img src="images/musk.jpg" class="resize-image" />
+                      <div class="form-group row">
+                          <div class="col-sm-1">
+                              <img src="images/comment.png" class="symbol" />
+                          </div>
+                          <div class="col-sm-2">
+                              <p>890</p>
+                          </div>
+                          <div class="col-sm-1">
+                              <img src="images/retweet.png" class="symbol2" />
+                          </div>
+                          <div class="col-sm-2">
+                              <p>1.4k</p>
+                          </div>
+                          <div class="col-sm-1">
+                              <img src="images/love.png" class="symbol" />
+                          </div>
+                          <div class="col-sm-2">
+                              <p>2k2</p>
+                          </div>
+                      </div> -->
+              <!-- </div> -->
+            </div>
+          </div>
+          <div class="line"></div>
+          <% }); %>
+  </div>
+  
+    <!-- <div class="sidebar hiddenBar" class="col-sm-4 col-md-4">
+    <div class="box home-box">What's happening</div>
+    <div class="line"></div>
+    <div class="box">
+      <div>
+        <a
+          href="https://www.latimes.com/entertainment-arts/story/2021-02-23/shailene-woodley-aaron-rodgers-engaged-jimmy-fallon">
+          <h5>LAT Entertainment</h5>
+          Shailene Woodley opens up about engagement to Aaron Rodgers
+        </a>
+      </div>
+    </div>
+    <div class="line"></div>
+    <div class="box">
+      <div>
+        <a href="https://www.wsj.com/articles/pandemic-loneliness-is-hitting-young-adults-especially-hard-11614104792">
+          <h5>The Wall Street Journal</h5>
+          Pandemic loneliness is hitting young adults especially hard
+        </a>
+      </div>
+    </div>
+    <div class="line"></div>
+    <div class="box">
+      <div>
+        <a href="https://www.buzzfeed.com/jenniferabidor/elizabeth-olsen-mary-kate-ashley">
+          <h5>BuzzFeed</h5>
+          People Don't Know Elizabeth Olsen Is Related To Mary-Kate and Ashley
+        </a>
+      </div>
+    </div>
+  </div> -->
