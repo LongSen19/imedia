@@ -17,43 +17,49 @@ mongoose.connection;
 
 let posts = [
   {
-    post: "This is test post",
+    post: "This is test post #new",
     userEmail: "jon@wexler.com",
     userName: "jwexler",
     fullName: "John Wexler",
   },
   {
-    post: "How are you",
+    post: "How are you #testing",
     userEmail: "charlie@angel.com",
     userName: "cangel",
     fullName: "Charlie Angel",
   },
   {
-    post: "What's new",
+    post: "What's new #nice",
     userEmail: "jon@wexler.com",
     userName: "jwexler",
     fullName: "John Wexler",
   },
   {
-    post: "This is a greate day",
+    post: "This is a greate day #umbrella",
     userEmail: "charlie@angel.com",
     userName: "cangel",
     fullName: "Charlie Angel",
   },
   {
-    post: "Just test",
+    post: "Just test #notAtest",
     userEmail: "elvis@john.com",
     userName: "ejohn",
     fullName: "Elvis John",
   },
   {
-    post: "Hi",
+    post: "Hi #sure",
     userEmail: "charlie@angel.com",
     userName: "cangel",
     fullName: "Charlie Angel",
   },
   {
-    post: "Nice",
+    post: "Nice #luna",
+    userEmail: "elvis@john.com",
+    userName: "ejohn",
+    fullName: "Elvis John",
+  },
+  {
+    post: "I'm Long. I'm testing the app #tag",
     userEmail: "elvis@john.com",
     userName: "ejohn",
     fullName: "Elvis John",
@@ -99,6 +105,19 @@ let users = [
     securityResponse: "tigers",
     bio: "Hello this is elvis john bio",
     numberOfPosts: 2,
+  },
+  {
+    name: { firstName: "Long", lastName: "Sen" },
+    location: "Denver",
+    gender: "male",
+    dateOfBirth: "1999-12-29",
+    email: "long@sen.com",
+    userName: "LongSen",
+    password: "Admin123",
+    securityQuestion: "What was your high schools mascot?",
+    securityResponse: "luna",
+    bio: "Hello this is Long Sen bio",
+    numberOfPosts: 1,
   },
 ];
 
